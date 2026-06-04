@@ -5,171 +5,214 @@
 <title>Predictive Modeling of Immune Responses to Influenza Vaccination</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-    
+
     body {
         font-family: 'Open Sans', sans-serif;
         margin: 0;
         padding: 0;
-        background: #333; /* Dark background outside the poster */
+        background: #333;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         min-height: 100vh;
     }
-    
+
     .poster {
-        /* Standard 48x36 poster size */
-        width: 48in;
-        height: 36in;
+        width: 36in;
+        height: 48in;
         background: #f4f6f8;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
-        padding: 1in;
+        padding: 0.7in;
         position: relative;
         overflow: hidden;
     }
-    
+
     header {
-        background: #182B49; /* Academic Dark Blue */
+        background: #182B49;
         color: white;
-        padding: 0.8in;
+        padding: 0.4in 0.6in;
         text-align: center;
-        border-radius: 0.2in;
-        margin-bottom: 0.4in;
+        border-radius: 0.15in;
+        margin-bottom: 0.3in;
+        flex-shrink: 0;
     }
-    
-    h1 { 
-        margin: 0; 
-        font-size: 64pt; 
+
+    h1 {
+        margin: 0;
+        font-size: 56pt;
         font-weight: 700;
+        line-height: 1.15;
     }
-    
-    h2 { 
-        margin: 0.2in 0; 
-        font-size: 36pt; 
-        font-weight: 400; 
-        color: #FFCD00; /* Accent Gold */ 
+
+    h2 {
+        margin: 0.1in 0 0;
+        font-size: 30pt;
+        font-weight: 400;
+        color: #FFCD00;
     }
-    
-    .authors { 
-        font-size: 28pt; 
+
+    .authors {
+        font-size: 23pt;
         font-weight: 600;
-        margin-top: 0.3in;
+        margin-top: 0.15in;
     }
-    
+
     .main-content {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.4in;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1.35fr;
+        gap: 0.3in;
         flex-grow: 1;
+        min-height: 0;
     }
-    
+
     .column {
         background: white;
-        padding: 0.4in;
-        border-radius: 0.2in;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding: 0.3in;
+        border-radius: 0.15in;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         display: flex;
         flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
     }
-    
+
     .column.highlight {
-        background: #FFF9D9; /* Highlight for Insights */
-        border: 4px solid #FFCD00;
-    }
-    
-    h3 {
-        color: #182B49;
-        border-bottom: 4px solid #FFCD00;
-        padding-bottom: 0.1in;
-        margin-top: 0;
-        font-size: 32pt;
-        text-align: center;
-    }
-    
-    h4 {
-        color: #00629B;
-        font-size: 28pt;
-        margin-top: 0.3in;
-        margin-bottom: 0.1in;
-    }
-    
-    p, ul, li { 
-        font-size: 21pt; 
-        line-height: 1.5; 
-        color: #222; 
-    }
-    
-    ul { padding-left: 1.5em; margin-top: 0.1in; }
-    li { margin-bottom: 0.15in; }
-    
-    .image-placeholder {
-        background: #e0e0e0;
-        border: 3px dashed #999;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: #555;
-        font-weight: 600;
-        font-size: 18pt;
-        margin: 0.2in 0;
-        border-radius: 0.1in;
-        flex-grow: 1;
-        padding: 0.2in;
-    }
-    
-    .image-placeholder code {
-        background: #fff;
-        padding: 5px 10px;
-        margin-top: 10px;
-        font-size: 16pt;
-        border-radius: 5px;
-        color: #d32f2f;
-    }
-    
-    footer {
-        background: #00629B;
-        color: white;
-        padding: 0.4in;
-        border-radius: 0.2in;
-        margin-top: 0.4in;
-        display: flex;
-        align-items: center;
+        background: #FFF9D9;
+        border: 3px solid #FFCD00;
         justify-content: space-between;
     }
-    
-    footer h3 { 
-        border: none; 
-        color: #FFCD00; 
-        margin: 0 0 0.1in 0; 
-        text-align: left;
-        padding: 0;
+
+    .col-problem  { grid-column: 1; grid-row: 1 / 3; }
+    .col-methods  { grid-column: 2; grid-row: 1 / 3; }
+    .col-insights { grid-column: 3; grid-row: 1; }
+    .col-results  { grid-column: 3; grid-row: 2; }
+
+    .col-problem h4 { margin-top: 0.3in; }
+
+    h3 {
+        color: #182B49;
+        border-bottom: 3px solid #FFCD00;
+        padding-bottom: 0.07in;
+        margin: 0 0 0.1in 0;
+        font-size: 27pt;
+        text-align: center;
+        flex-shrink: 0;
     }
-    
-    footer p { color: white; margin: 0; }
-    
-    .footer-text { 
-        flex: 1; 
-        padding-right: 0.5in; 
+
+    h4 {
+        color: #00629B;
+        font-size: 22pt;
+        margin: 0.14in 0 0.05in;
+        flex-shrink: 0;
     }
-    
-    .footer-image { 
-        width: 40%; 
-        min-height: 2.5in; 
-        background: #e0e0e0; 
-        border: 3px dashed #999; 
-        color: #333; 
-        display: flex; 
-        flex-direction: column;
-        align-items: center; 
-        justify-content: center; 
-        font-weight: 600;
+
+    p, ul, li {
+        font-size: 19pt;
+        line-height: 1.45;
+        color: #222;
+        margin: 0;
+    }
+
+    p { margin-bottom: 0.04in; }
+    ul { padding-left: 1.3em; margin-top: 0.05in; }
+    li { margin-bottom: 0.07in; }
+
+    /* Fixed-height placeholders for landscape images */
+    .img-fixed {
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 0.08in;
+        margin: 0.12in 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Flex-grow placeholder for square/portrait images */
+    .img-grow {
+        flex-grow: 1;
+        min-height: 0;
+        overflow: hidden;
+        border-radius: 0.08in;
+        margin: 0.12in 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-fixed img,
+    .img-grow img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* Results table */
+    .results-table {
+        width: 100%;
+        border-collapse: collapse;
         font-size: 18pt;
-        border-radius: 0.1in;
+        margin: 0.08in 0;
+        flex-shrink: 0;
     }
+    .results-table th {
+        background: #182B49;
+        color: white;
+        padding: 0.055in 0.1in;
+        text-align: left;
+        font-weight: 600;
+    }
+    .results-table th:last-child,
+    .results-table td:last-child { text-align: right; }
+    .results-table td {
+        padding: 0.05in 0.1in;
+        border-bottom: 1px solid #dde3ea;
+        color: #222;
+    }
+    .results-table tr:nth-child(even) td { background: #f0f4f8; }
+    .results-table td.score { font-weight: 700; color: #182B49; }
+    .results-table td.highlight-row { color: #00629B; font-weight: 600; }
+
+    /* Compact task table in col 1 */
+    .task-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 18pt;
+        margin: 0.05in 0;
+        flex-shrink: 0;
+    }
+    .task-table th {
+        background: #00629B;
+        color: white;
+        padding: 0.05in 0.09in;
+        text-align: left;
+    }
+    .task-table td {
+        padding: 0.045in 0.09in;
+        border-bottom: 1px solid #dde3ea;
+        color: #222;
+    }
+    .task-table tr:nth-child(even) td { background: #f0f4f8; }
+    .task-table td:first-child { font-weight: 700; color: #182B49; white-space: nowrap; }
+
+    .score-box {
+        background: #182B49;
+        color: white;
+        border-radius: 0.1in;
+        padding: 0.15in 0.18in;
+        margin: 0.1in 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    .score-box .score-item { text-align: center; }
+    .score-box .score-val { font-size: 32pt; font-weight: 700; color: #FFCD00; display: block; }
+    .score-box .score-lbl { font-size: 17pt; color: #cdd8e4; }
+
 </style>
 </head>
 <body>
@@ -178,131 +221,208 @@
     <header>
         <h1>Predictive Modeling of Immune Responses to Influenza Vaccination</h1>
         <h2>Forecasting individual antibody magnitude, breadth, and durability from the CMI-Flu Prediction Challenge dataset</h2>
-        <div class="authors">Chayan Tronson, Brian Hill, Arvind Krish | Advisors: Barry Grant, Bjoern Peters | UC San Diego DSE MAS</div>
+        <div class="authors">Chayan Tronson, Brian Hill, Arvind Krish &nbsp;|&nbsp; Advisors: Barry Grant, Bjoern Peters &nbsp;|&nbsp; UC San Diego DSE MAS</div>
     </header>
 
     <div class="main-content">
-        <!-- COLUMN 1 -->
-        <div class="column">
-            <h3>THE PROBLEM & DATA</h3>
-            
-            <h4>The Challenge</h4>
-            <p>Flu vaccines offer incomplete, short-lived protection that varies widely between individuals based on age, genetics, and prior exposure. We built ML models to predict how a specific person responds to vaccination over time, benchmarked against a day-0 + demographics baseline to prove the added biological data carries real signal.</p>
-            
-            <h4>The Data</h4>
+
+        <!-- ═══════════════════════════════════════ COLUMN 1 ═══ -->
+        <div class="column col-problem">
+            <h3>THE PROBLEM &amp; DATA</h3>
+
+            <h4>Background &amp; Motivation</h4>
+            <p>Seasonal influenza causes 3–5 million severe cases annually. Unlike vaccines that provide durable, lifelong protection, flu shots offer incomplete, short-lived protection that varies widely between individuals based on age, genetics, and prior exposure. This creates a critical gap: the inability to accurately predict how a specific individual will respond to vaccination over time. The CMI-Flu Challenge pushes toward solving this with standardized, multi-omic data.</p>
+
+            <h4>The Dataset</h4>
             <ul>
-                <li>CMI-Flu Prediction Challenge (NIH-funded, ~11 GB), 3,960 participants</li>
-                <li>HAI serology (antibody titers), transcriptomics (RNA-seq + microarray), flow cytometry across multiple cohorts</li>
-                <li>Linked by participant ID across timepoints (Day 0, 28, 365)</li>
+                <li><strong>CMI-Flu Prediction Challenge</strong> (NIH-funded, ~11 GB) with 3,960 participants across multiple influenza vaccine studies</li>
+                <li><strong>HAI serology:</strong> 128,177 antibody titer measurements, 65+ influenza strains, 3 timepoints (Day 0, 28, 365)</li>
+                <li><strong>Transcriptomics (RNA-seq):</strong> ~78M gene expression rows across 4 cohorts (2019_UGA: 30.5M, SDY2867: 21.1M, SDY2941: 20.3M, 2020_UGA: 5.8M)</li>
+                <li><strong>Flow cytometry:</strong> 213,624 immune cell subset measurements</li>
+                <li><strong>BCR sequences:</strong> 252,479 antibody sequences</li>
+                <li>All data linked by <code>participant_id</code> across assay types and timepoints</li>
             </ul>
-            
+
+            <!-- DatasetSchema — full column width, natural aspect ratio -->
+            <div style="flex-shrink: 0; margin: 0.15in 0 0; border-radius: 0.08in; overflow: hidden;">
+                <img src="DatasetSchema.png" alt="Dataset schema — all tables linked by participant_id" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <h4>Prediction Tasks</h4>
+            <table class="task-table">
+                <tr><th>Task</th><th>Prediction Target (Day 28)</th></tr>
+                <tr><td>4.1</td><td>H1N1 A/Victoria/4897/2022 HAI titer magnitude</td></tr>
+                <tr><td>4.2</td><td>H3N2 A/Massachusetts/18/2022 HAI titer magnitude</td></tr>
+                <tr><td>4.3</td><td>B/Victoria B/Austria/1359417/2021 HAI titer magnitude</td></tr>
+                <tr><td>4.4</td><td>Geometric mean magnitude across Tasks 4.1, 4.2, and 4.3</td></tr>
+                <tr><td>4.5</td><td>Antibody breadth: geomean HAI across all variants</td></tr>
+                <tr><td>4.6</td><td>Antibody breadth: % of variants with HAI &ge; 40</td></tr>
+            </table>
+
             <h4>Key Data Hurdles</h4>
             <ul>
-                <li>High missingness; entire assays (BCR, microarray) unusable because absent from challenge set</li>
-                <li>Target strains sometimes absent from training (Task 4.2)</li>
-                <li>Gene IDs inconsistent across studies; cohort-level batch effects</li>
+                <li><strong>Challenge-set alignment:</strong> BCR sequencing and microarray data (16M+ rows) entirely absent from the challenge set, making them unusable despite potential biological value</li>
+                <li><strong>Missing target strain:</strong> Task 4.2's H3N2 A/Massachusetts/18/2022 did not appear anywhere in the training data, requiring a proxy target strategy</li>
+                <li><strong>Gene ID inconsistency:</strong> Measured gene sets differed between transcriptomics cohorts; only the intersection of genes present across all studies could be used</li>
+                <li><strong>HAI gaps:</strong> SDY2941 participants had no corresponding HAI measurements at all, preventing direct transcriptomics-to-antibody linkage for that cohort</li>
+                <li><strong>High sparsity:</strong> 83,000+ flow cytometry columns dropped for &gt;80% missingness; many HAI strain-timepoint combinations missing for large participant subsets</li>
             </ul>
-            
-            <div class="image-placeholder">
-                [IMAGE: Figure 1 — Dataset schema diagram]
-                <br>
-                <code>&lt;img src="figure1.png" style="width:100%;"&gt;</code>
+
+            <!-- Tools & Products — fills all remaining column space -->
+            <div style="background:#00629B; border-radius:0.12in; padding:0.22in 0.25in; margin-top:0.28in; flex-grow:1; display:flex; flex-direction:column; min-height:0;">
+                <div style="color:#FFCD00; font-size:24pt; font-weight:700; margin-bottom:0.08in;">Tools &amp; Products: ImmunoExplorer</div>
+                <p style="color:white; font-size:17pt; margin-bottom:0.14in;">Built with React + TypeScript; explores 3,757 participants, 65+ flu strains, and three timepoints entirely in the browser. Features HAI titer distributions, strain correlation heatmaps, a participant deep-dive radar chart, and an AI-powered natural language query interface with no backend required.</p>
+                <div style="flex-grow:1; min-height:0; overflow:hidden; border-radius:0.08in;">
+                    <img src="ImmunoExplorer.png" alt="ImmunoExplorer Dashboard" style="width:100%; height:100%; object-fit:contain; display:block;">
+                </div>
+                <div style="flex-grow:1; min-height:0; overflow:hidden; border-radius:0.08in; margin-top:0.12in;">
+                    <img src="Chat.png" alt="ImmunoExplorer AI Chat Interface" style="width:100%; height:100%; object-fit:contain; display:block;">
+                </div>
             </div>
         </div>
 
-        <!-- COLUMN 2 -->
-        <div class="column">
+        <!-- ═══════════════════════════════════════ COLUMN 2 ═══ -->
+        <div class="column col-methods">
             <h3>METHODS / PIPELINE</h3>
-            
-            <h4>Preprocessing</h4>
+
+            <h4>Data Preprocessing</h4>
             <ul>
-                <li>Pivoted HAI + transcriptomics to wide format (one row per participant)</li>
-                <li>Log2-transformed titers; encoded categoricals; scaled age</li>
-                <li>ComBat batch correction to remove study-specific technical variation</li>
-                <li>PCA compressed transcriptomics to 290 components capturing 95% of variance</li>
-                <li>Dropped sparse, leakage, and non-challenge features; engineered proxies, aggregates, deltas</li>
+                <li>Pivoted HAI + transcriptomics from long format to wide format, with one row per participant and columns named <em>HAI_&lt;strain&gt;_d&lt;day&gt;</em> and <em>TRAN_&lt;gene&gt;_d&lt;day&gt;</em></li>
+                <li>Log₂-transformed HAI titers (dilution-based, right-skewed); binary-encoded sex and arm; standard-scaled age</li>
+                <li>Folded day-30 cohort into day-28 (group means matched), recovering ~470 additional training rows</li>
+                <li>ComBat batch correction across 4 transcriptomics cohorts to strip study-specific technical variation</li>
+                <li>PCA compressed transcriptomics from tens of thousands of gene features into 290 principal components capturing 95% of variance</li>
+                <li>Dropped columns with &gt;50–90% missingness, any feature absent from the challenge set, and all Day 28/365 columns to prevent target leakage</li>
             </ul>
-            
-            <h4>Modeling</h4>
+
+            <!-- Batch correction: Before (top) and After (bottom), equal share of remaining space -->
+            <div class="img-grow">
+                <img src="BatchCorrectionBefore.png" alt="Before ComBat batch correction — cohort clusters separated">
+            </div>
+            <div class="img-grow">
+                <img src="BatchCorrectionAfter.png" alt="After ComBat batch correction — cohort clusters aligned">
+            </div>
+
+            <h4>Feature Engineering</h4>
             <ul>
-                <li>Framed all tasks as regression problems</li>
-                <li>Baseline: Linear Regression (demographics + Day 0 only) to establish a floor</li>
-                <li>H2O AutoML: up to 62 models per task (GBM, XGBoost, Deep Learning, Random Forest) combined into Stacked Ensembles</li>
-                <li>Evaluated with 5-fold cross-validation; Spearman correlation as the primary metric (rank-ordering participants)</li>
+                <li><strong>Proxy target (Task 4.2):</strong> Row-mean of all H3N2 Day 28 titers used as a stand-in for the missing A/Massachusetts/18/2022 strain; H3N2 strains are highly correlated (CV Spearman = 0.816)</li>
+                <li><strong>Delta features (Task 4.5):</strong> <em>breadth_delta = geomean_d28 − geomean_d0</em>, modeling the vaccine-induced rise rather than absolute titer and then adding the predicted delta back to each participant's Day 0 baseline for the final prediction</li>
+                <li><strong>Aggregate targets:</strong> Geometric mean across 3 strains (Task 4.4); seroprotection fraction &ge; 40 across all variants (Task 4.6)</li>
+                <li><strong>Cross-task transfer:</strong> Task 4.5 model reused for Tasks 4.1, 4.2, 4.4 by anchoring predictions to each participant's strain-specific Day 0 titer and adding the predicted breadth delta</li>
             </ul>
-            
-            <div class="image-placeholder" style="min-height: 4in;">
-                [IMAGE: Figure 4 — Before/after ComBat batch correction PCA plot]
-                <br>
-                <code>&lt;img src="figure4.png" style="width:100%;"&gt;</code>
+
+            <h4>Modeling Architecture</h4>
+            <ul>
+                <li>All 6 tasks framed as regression problems; Spearman rank correlation used as the primary evaluation metric</li>
+                <li>Baseline: Linear Regression on demographics + Day 0 titers to establish a performance floor</li>
+                <li>H2O AutoML: up to 62 models per task (GBM, XGBoost, Deep Learning, DRF, GLM) → automatically combined into Stacked Ensembles</li>
+                <li>5-fold cross-validation with holdout predictions to mirror Kaggle's official ranking criterion</li>
+                <li>Training set sizes ranged from 920 participants (Task 4.3) to 3,705 (Task 4.6), directly impacting model confidence</li>
+            </ul>
+
+            <!-- EntireWorkFlow — full column width, natural aspect ratio -->
+            <div style="flex-shrink: 0; margin: 0.15in 0 0; border-radius: 0.08in; overflow: hidden;">
+                <img src="EntireWorkFlow.png" alt="End-to-end CMI-Flu data pipeline and modeling workflow" style="width: 100%; height: auto; display: block;">
             </div>
         </div>
 
-        <!-- COLUMN 3 (Highlighted) -->
-        <div class="column highlight">
+        <!-- ═══════════════════════════════════════ COL 3 TOP ═══ -->
+        <div class="column highlight col-insights">
             <h3>KEY INSIGHTS</h3>
-            
-            <p><strong>Day 0 titers are the dominant predictor.</strong> A participant's pre-vaccination HAI titer outweighed every other feature, often by an order of magnitude, across all tasks.</p>
-            
-            <p><strong>One model can serve many tasks.</strong> The Task 4.5 breadth model (trained on 1,200+ participants) was repurposed for strain-specific tasks by adding its predicted rise on top of each participant's Day 0 titer, beating individually trained models when data was sparse.</p>
-            
-            <p><strong>Age drives breadth of response.</strong> For Task 4.5, age was the single strongest feature, suggesting it shapes not just how strongly but how broadly a person responds.</p>
-            
-            <p><strong>Cross-strain responses are correlated.</strong> Participants who respond broadly also respond strongly to specific strains, pointing to a general immune-responsiveness trait.</p>
-            
-            <p><strong>Transcriptomics add signal when present.</strong> After PCA, Day 7 transcriptomic PCs consistently ranked in the top features for breadth, boosting one submission score by 9%.</p>
-            
-            <p><strong>Batch correction was essential</strong> for combining cohorts without mistaking technical artifacts for biology.</p>
+
+            <p><strong>Day 0 titers are the dominant predictor.</strong> A participant's pre-vaccination HAI titer outweighed every other feature, often by an order of magnitude, across all tasks. This confirms that immune memory at the time of vaccination is the strongest available signal.</p>
+
+            <p><strong>One model can serve many tasks.</strong> The Task 4.5 breadth model (1,282 participants) was repurposed for Tasks 4.1, 4.2, and indirectly 4.4 by adding its predicted rise to each participant's Day 0 titer, outperforming individually trained models when task-specific data was sparse.</p>
+
+            <p><strong>Age drives breadth of response.</strong> For Task 4.5, participant age was the single strongest feature, outweighing all HAI titers and transcriptomics PCs. This suggests age shapes not just how strongly, but how broadly, a person responds across strains.</p>
+
+            <p><strong>Cross-strain immune responses are correlated.</strong> Participants who respond broadly also tend to respond strongly to individual strains, pointing to a general immune-responsiveness trait that transcends specific viral targets.</p>
+
+            <p><strong>Transcriptomics add signal when present.</strong> After ComBat correction and PCA, Day 7 transcriptomic PCs (notably TRAN_PC115 and TRAN_PC61) consistently ranked in the top features for Task 4.5, boosting the final submission score by 9%.</p>
+
+            <p><strong>Batch correction was essential.</strong> Transcriptomics data came from four separate cohorts each with strong technical batch effects. Without ComBat, cohort identity rather than biology would have driven those features.</p>
+
+            <p><strong>Proxy targeting requires calibration.</strong> Task 4.2's H3N2 proxy achieved the highest CV Spearman (0.816) yet the lowest competition score, showing that cross-strain proxies work in-distribution but may not generalize perfectly to held-out challenge data.</p>
+
+            <p><strong>Biological sex has marginal value.</strong> Sex appeared in the top 15 features for Task 4.5, but with far lower importance than age or HAI titers, suggesting its effect on antibody breadth is modest and secondary.</p>
         </div>
 
-        <!-- COLUMN 4 -->
-        <div class="column">
+        <!-- ═══════════════════════════════════════ COL 3 BOT ═══ -->
+        <div class="column col-results">
             <h3>RESULTS</h3>
-            
-            <h4>Final Kaggle Score</h4>
-            <ul>
-                <li><strong>Private (62% of test data): 0.7581</strong> — the official ranking metric</li>
-                <li>Public (38% of test data): 0.8033</li>
-                <li>A significant jump over the baseline and other CMI-Flu submissions</li>
-            </ul>
-            
-            <h4>Per-Task CV Spearman</h4>
-            <ul>
-                <li>Task 4.2 (H3N2 magnitude, proxy target): <strong>0.816</strong></li>
-                <li>Task 4.6 (breadth, % of variants >= 40): <strong>0.773</strong></li>
-                <li>Task 4.5 (breadth, geomean): <strong>0.754</strong></li>
-                <li>Task 4.3 (Vic B magnitude): <strong>0.721</strong></li>
-            </ul>
-            
-            <div class="image-placeholder" style="min-height: 3.5in; margin-top: 0;">
-                [IMAGE: Figure 12 — Task 4.5 CV predicted-vs-actual]
-                <br>
-                <code>&lt;img src="figure12.png" style="width:100%;"&gt;</code>
+
+            <!-- Task 4.5 predicted vs actual — natural aspect ratio, no letterboxing -->
+            <div style="flex-shrink:0; margin:0 0 0.12in; border-radius:0.08in; overflow:hidden;">
+                <img src="Task_4_5_Predicted.png" alt="Task 4.5 CV: Actual vs Predicted geomean Day 28 HAI titer" style="width:100%; height:auto; display:block;">
             </div>
-            
-            <div class="image-placeholder" style="min-height: 3in;">
-                [IMAGE: Figure 20 — Kaggle final leaderboard]
-                <br>
-                <code>&lt;img src="figure20.png" style="width:100%;"&gt;</code>
+
+            <!-- Score highlight boxes -->
+            <div class="score-box">
+                <div class="score-item">
+                    <span class="score-val">0.7581</span>
+                    <span class="score-lbl">Official Final Score (62% test data)</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-val">0.8033</span>
+                    <span class="score-lbl">Public Leaderboard Score (38% test data)</span>
+                </div>
             </div>
-            
+
+            <h4>Per-Task Cross-Validation Results</h4>
+            <table class="results-table">
+                <tr>
+                    <th>Task</th>
+                    <th>Target</th>
+                    <th>Training Participants</th>
+                    <th>CV Spearman</th>
+                </tr>
+                <tr>
+                    <td>4.2</td>
+                    <td>H3N2 magnitude (proxy)</td>
+                    <td>~1,100</td>
+                    <td class="score">0.816</td>
+                </tr>
+                <tr>
+                    <td>4.6</td>
+                    <td>Breadth ≥ HAI 40</td>
+                    <td>3,705</td>
+                    <td class="score">0.773</td>
+                </tr>
+                <tr>
+                    <td>4.5</td>
+                    <td>Breadth geomean</td>
+                    <td>1,282</td>
+                    <td class="score">0.754</td>
+                </tr>
+                <tr>
+                    <td>4.3</td>
+                    <td>Vic B magnitude</td>
+                    <td>920</td>
+                    <td class="score">0.721</td>
+                </tr>
+                <tr>
+                    <td>4.1</td>
+                    <td>H1N1 magnitude</td>
+                    <td>~300</td>
+                    <td class="score">0.348</td>
+                </tr>
+                <tr>
+                    <td>4.4</td>
+                    <td>Geomean 3 strains</td>
+                    <td>N/A</td>
+                    <td class="score">Derived*</td>
+                </tr>
+            </table>
+
+            <p style="font-size:14pt; color:#666; margin:0.04in 0 0.1in;">*Task 4.4 derived as geometric mean of Tasks 4.1, 4.2, and 4.3 predictions; no separate model was trained.</p>
+
             <h4>Conclusion</h4>
-            <p>Multi-omic data can be modeled to predict individual flu vaccine responses. AutoML ensembles beat demographic baselines, with baseline titers as the primary driver, laying groundwork for personalized vaccine administration.</p>
+            <p>We built a machine learning pipeline to predict how individual patients respond to influenza vaccination using immunological and demographic data from the CMI-Flu Challenge. By combining batch correction, dimensionality reduction, and automated ensemble modeling, we outperformed a demographic baseline across all six prediction tasks.</p>
+            <p>Our key finding was that a person's pre-existing antibody levels at vaccination time are the strongest predictor of their response, with age playing an important secondary role. We also showed that a single well-trained model can generalize across related tasks, and that transcriptomic data adds meaningful predictive signal when available. Together, these insights suggest that personalized vaccine response prediction is achievable with the right combination of biological data and machine learning. This work lays a computational foundation that could help clinicians identify individuals most likely to benefit from revaccination or adjusted dosing strategies. The pipeline and findings were delivered to the CMI-Flu challenge organizers to support future research in precision immunology.</p>
         </div>
+
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-text">
-            <h3>Tools & Products — ImmunoExplorer Dashboard</h3>
-            <p>Built with React + TypeScript; explores 3,757 participants, 65+ strains, and three timepoints in the browser.</p>
-        </div>
-        <div class="footer-image">
-            [IMAGE: Figure 16 — ImmunoExplorer Dataset Overview]
-            <br>
-            <code>&lt;img src="figure16.png" style="height:100%;"&gt;</code>
-        </div>
-    </footer>
 </div>
 
 </body>
